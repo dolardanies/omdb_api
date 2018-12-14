@@ -19,7 +19,7 @@ import edu.eci.arsw.parcial.bean.Movie;
  *
  * @author 
  */
-@Service("OpenMovie")
+@Service("OmdbMovie")
 public class MovieOmdb implements Movie {
 
    
