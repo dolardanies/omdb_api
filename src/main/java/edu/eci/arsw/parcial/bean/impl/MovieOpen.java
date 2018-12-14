@@ -9,41 +9,34 @@ import edu.eci.arsw.parcial.Model.HttpConnection;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Service;
-import edu.eci.arsw.parcial.bean.Clima;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import edu.eci.arsw.parcial.bean.Movie;
 
 /**
- * Api OpenWeather
+ *
  *
  * @author 
  */
-@Service("OpenWeather")
-public class ClimaOpenWeather implements Clima {
+@Service("OpenMovie")
+public class MovieOpen implements Movie {
 
-    /**
-     * Implementación de cache de manera concurrente.
-     */
+   
     private ConcurrentHashMap<String, String> cache = new ConcurrentHashMap<String, String>();
     Date date = new Date();
     int minutos = 0;
 
-    /**
-     * Obtener el contenido de la url especificada con la ciudad dada.
-     *
-     * @param clima nombre de la ciudad.
-     * @throws IOException si el nombre de la ciudad no existe.
-     */
+    
     @Override
-    public String obtenerAcciones(String clima) throws IOException {
+    public String obtenerMovie(String title, int year) throws IOException {
         String urlData;
         int tiempoTranscurrido = date.getMinutes() - minutos;
-        if (cache.containsKey(clima) && tiempoTranscurrido < 5) {
-            urlData = cache.get(clima);
+        if (cache.containsKey(title) && tiempoTranscurrido < 5) {
+            urlData = cache.get(title);
         } else {
-            urlData = HttpConnection.getUrlData("http://api.openweathermap.org/data/2.5/weather?q=" + clima + "&APPID=33b204276dc51906ba9ddcf4d9704ac8");
-            cache.put(clima, urlData);
+            urlData = HttpConnection.getUrlData("http://www.omdbapi.com/?t="+ title +"&y=" + year + "&apikey=fd99deec");
+            cache.put(title, urlData);
             minutos = date.getMinutes();
         }
         return urlData;

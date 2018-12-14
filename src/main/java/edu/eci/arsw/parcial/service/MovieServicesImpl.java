@@ -9,30 +9,28 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import edu.eci.arsw.parcial.bean.Clima;
+import edu.eci.arsw.parcial.bean.Movie;
 
 /**
- * Implementación de los servicios expuestos
+ *
  *
  * @author 
  */
 @Service
-public class ClimaServicesImpl implements ClimaServicios {
+public class MovieServicesImpl implements MovieServicios {
 
     /**
-     * Implementación con inversión de control para uso de otras apis.
+     * 
      */
     @Autowired
-    @Qualifier("OpenWeather")
-    Clima clima;
+    @Qualifier("OpenMovie")
+    Movie movie;
 
     /**
      *
-     * @param city the value of city
-     * @throws IOException si no existe el nombre de la ciudad.
      */
     @Override
-    public String obtenerClimaCiudad(String city) throws IOException {
-        return clima.obtenerAcciones(city);
+    public String obtenerMovie(String title, int year) throws IOException {
+        return movie.obtenerMovie(title, year);
     }
 }

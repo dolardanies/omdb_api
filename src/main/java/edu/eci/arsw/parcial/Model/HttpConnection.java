@@ -46,6 +46,5 @@ public class HttpConnection {
         } else {
             return "GET request not worked";
         }
-        //System.out.println("GET DONE");
     }
 }

@@ -12,27 +12,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import edu.eci.arsw.parcial.service.ClimaServicios;
+import edu.eci.arsw.parcial.service.MovieServicios;
 
 /**
- * ApiRest que permite acceder a un conjunto de datos por medio del protocolo
- * http, usando los verbos del mismo.
- *
+ * 
  * @author 
  */
 @RestController
-@RequestMapping("/clima")
-public class ClimaApiController {
+@RequestMapping("/movie")
+public class MovieApiController {
 
     @Autowired
-    private ClimaServicios cs;
+    private MovieServicios ms;
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{city}")
-    public ResponseEntity<?> getAcciones(@PathVariable("city") String city) {
+    @RequestMapping(method = RequestMethod.GET, path = "/{title}/{year}")
+    public ResponseEntity<?> getMovie(@PathVariable("title") String title, @PathVariable("year") int year) {
         try {
-            return new ResponseEntity<>(cs.obtenerClimaCiudad(city), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(ms.obtenerMovie(title, year), HttpStatus.ACCEPTED);
         } catch (Exception e) {
-            return new ResponseEntity<>("Error al obtener el estado del clima de: " + city, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Error al obtenerla data del movie: " + title + " " + year, HttpStatus.NOT_FOUND);
         }
     }
 }

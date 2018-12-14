@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.parcial.bean;
+package edu.eci.arsw.parcial.service;
 
 import java.io.IOException;
 
 /**
+ * Servicios expuestos
  *
  * @author 
  */
-public interface Clima {
+public interface MovieServicios {
 
     /**
      *
-     * @param clima the value of clima
-     * @return
-     * @throws IOException
+     * @param title
+     * @param year
+     * @return 
+     * @throws java.io.IOException
      */
-    public String obtenerAcciones(String clima) throws IOException;
+    public String obtenerMovie(String title, int year) throws IOException;
 }
