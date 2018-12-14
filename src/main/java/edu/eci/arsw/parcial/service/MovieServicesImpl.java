@@ -23,7 +23,7 @@ public class MovieServicesImpl implements MovieServicios {
      * 
      */
     @Autowired
-    @Qualifier("OpenMovie")
+    @Qualifier("OmdbMovie")
     Movie movie;
 
     /**

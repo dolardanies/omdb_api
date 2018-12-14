@@ -20,7 +20,7 @@ import edu.eci.arsw.parcial.bean.Movie;
  * @author 
  */
 @Service("OpenMovie")
-public class MovieOpen implements Movie {
+public class MovieOmdb implements Movie {
 
    
     private ConcurrentHashMap<String, String> cache = new ConcurrentHashMap<String, String>();
